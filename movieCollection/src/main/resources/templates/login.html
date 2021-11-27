@@ -19,16 +19,18 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Registration and
-					Login Module</a>
+				<a class="navbar-brand" href="#" th:href="@{/}">Anasayfa
+					</a>
 			</div>
 		</div>
 	</nav>
+	<br>
+		<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 
-				<h1>User Login</h1>
+				<h1>Giriş Yap</h1>
 				<form th:action="@{/login}" method="post">
 					<div th:if="${param.error}">
 						<div class="alert alert-danger">Invaıld Username or password</div>
@@ -37,13 +39,13 @@
 						<div class="alert alert-danger">You Have been logged out</div>
 					</div>
 					<div class="form-group">
-						<label for="username"> Username </label> : <input type="text"
+						<label for="username"> Email </label> : <input type="text"
 							class="form-control" id="username" name="username"
 							placeholder="Enter Email ID" autofocus="autofocus">
 					</div>
 
 					<div class="form-group">
-						<label for="password">Password</label>: <input type="password"
+						<label for="password">Şifre</label>: <input type="password"
 							id="password" name="password" class="form-control"
 							placeholder="Enter Password" />
 					</div>
@@ -52,14 +54,14 @@
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-3">
 								<input type="submit" name="login-submit" id="login-submit"
-									class="form-control btn btn-primary" value="Log In" />
+									class="form-control btn btn-primary" value="Giriş Yap" />
 							</div>
 						</div>
 					</div>
 				</form>
 				<div class="form-group">
-					<span>New user? <a href="/" th:href="@{/registration}">Register
-							here</a></span>
+					<span>Kayıtlı depilmisin<a href="/" th:href="@{/registration}"> Kayıt Ol
+							</a></span>
 				</div>
 			</div>
 		</div>

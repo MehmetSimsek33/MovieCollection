@@ -22,11 +22,12 @@
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Registration and
-					login Module</a>
+				<a class="navbar-brand" href="#" th:href="@{/}">Ana sayfa
+					</a>
 			</div>
 		</div>
 	</nav>
+	<br>
 
 </body>
 <div class="container">
@@ -36,7 +37,7 @@
 				<div class="alert alert-info">You are successfully registered
 					to our app!</div>
 			</div>
-			<h1>Registration</h1>
+			<h1>Kayıt Ol</h1>
 
 			<form th:action="@{/registration}" method="post" th:object="${user}">
 				<div class="form-group">
@@ -66,7 +67,7 @@
 					</div>
 					<div class="form-group">
 					<button type="submit" class="btn btn-success">Register</button>
-					<span>Already registered? <a href="/" th:href="@{login}">Login here</a></span>
+					<span>Uyeligin var mı? <a href="/" th:href="@{login}">Giriş Yap</a></span>
 					</div>
 				</div>
 			</form>
