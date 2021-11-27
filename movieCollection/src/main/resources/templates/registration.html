@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+</head>
+<body>
+
+	<nav class="navbar fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle-collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					 <span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Registration and
+					login Module</a>
+			</div>
+		</div>
+	</nav>
+
+</body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div th:if="${param.success}">
+				<div class="alert alert-info">You are successfully registered
+					to our app!</div>
+			</div>
+			<h1>Registration</h1>
+
+			<form th:action="@{/registration}" method="post" th:object="${user}">
+				<div class="form-group">
+					<label class="control-label" for="firstName"> Adınız </label>
+					<div class="form-group form-floating mb-3">
+						<input id="firstName" class="form-control" th:field="*{firstName}"
+							placeholder="Adınızı giriniz." autofocus="autofocus" required>
+						<label class="control-label" for="lastName"> Soyadınız </label>
+					</div>
+					<div class="form-group form-floating mb-3">
+						<input id="lastName" class="form-control" th:field="*{lastName}"
+							placeholder="Soyadınızı giriniz." autofocus="autofocus" required>
+						<label class="control-label" for="email"> Email </label>
+					</div>
+					<div class="form-group form-floating mb-3">
+						<input id="email" class="form-control" th:field="*{email}"
+							placeholder="Emailinizi giriniz." autofocus="autofocus" required>
+
+					</div>
+
+
+					<div class="form-group form-floating mb-3">
+						<label class="control-label" for="password"> Parolanız </label> <input
+							id="password" type="password" class="form-control"
+							th:field="*{password}" placeholder="Parolanızı giriniz."
+							autofocus="autofocus" required>
+					</div>
+					<div class="form-group">
+					<button type="submit" class="btn btn-success">Register</button>
+					<span>Already registered? <a href="/" th:href="@{login}">Login here</a></span>
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+</div>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Movie List</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/}">ANASAYFA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/actorList}">Aktörler</a>
+        </li>
+        </ul>
+      
+    </div>
+  </div>
+</nav>
+
+</body>
+	<div class="container" align="center">
+		<h1>Film Koleksiyonu </h1><hr>
+
+		
+		<form action="#" th:action="@{/saveActor}" th:object="${actor}" method="post" >
+		
+		
+			<input type="hidden" th:field="*{id}">
+				<label class="text-light bg-dark"> Adi</label>	
+			<input type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+				<label class="text-light bg-dark"> Soyadi</label>	
+			<input type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+				
+
+				
+			<button type="submit" class="btn btn-outline-warning" >Aktör Bilgilerini Güncelle</button>
+			
+			
+<hr>
+
+		</form>
+	
+		
+	</div>
+
+</html>
