@@ -51,7 +51,7 @@ logging.level.org.hibernate.type=TRACE
 * # Anasayfa
 ![](https://i.hizliresim.com/j24pmkn.jpg)
 * # Actor Listesi
-![](https://i.hizliresim.com/tmbe5h3.jpg)
+![](https://www.hizliresim.com/lwwnkqs)
 * # Film Ekle
 ![](https://i.hizliresim.com/1mqit4i.jpg)
 * # Actor Ekle
