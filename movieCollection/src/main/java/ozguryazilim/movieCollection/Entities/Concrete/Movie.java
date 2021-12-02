@@ -61,7 +61,9 @@ public class Movie {
 
 	@Column(name = "language")
 	private String language;
-
+  
+	
+	
 	@ManyToMany()
 	@JoinTable( joinColumns = { @JoinColumn(name = "movie_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "actor_id") })
