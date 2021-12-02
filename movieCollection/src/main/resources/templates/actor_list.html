@@ -9,26 +9,26 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" th:href="@{/}">ANASAYFA</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-        	
-          <a class="nav-link active" aria-current="page" th:href="@{/newMovieForm}">Film Ekle</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/actorList}">Aktörler</a>
-        </li>
-        </ul>
-      
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}">ANASAYFA</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/newMovieForm}">Film Ekle</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/actorList}">Aktörler</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
 	<div class="container my-2">
 
 		<h1>Actor Listesi</h1>
@@ -39,8 +39,7 @@
 		<form th:action="@{/actorList}" method="get">
 			<div class="input-group mb-3">
 				<input id="txtSearch" type="text" name="keyword"
-					class="form-control "
-					placeholder="Oyuncu adına göre ara">
+					class="form-control " placeholder="Oyuncu adına göre ara">
 				<button type="submit" class="btn btn-dark">Ara</button>
 			</div>
 
@@ -49,15 +48,23 @@
 			<thead>
 				<tr>
 					<th>Adi</th>
-					
+
 					<th>Soyadi</th>
+					<th>Oynadigi Filmler</th>
 				</tr>
+				
 			</thead>
 
 			<tbody>
 				<tr th:each="actor : ${listActor}">
 					<td th:text="${actor.firstName}"></td>
 					<td th:text="${actor.lastName}"></td>
+					<td>
+						<p th:each="movie: ${actor.movies}" th:text="${movie.filmName}"></p>
+					</td>
+				
+				
+
 					<td><a th:href="@{/deleteActor/{id}(id=${actor.id})}"
 						class="btn btn-danger">Sil</a>
 						<hr> <a

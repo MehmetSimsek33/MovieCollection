@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ozguryazilim.movieCollection.Business.Abstract.ActorService;
 import ozguryazilim.movieCollection.Business.Abstract.MovieService;
 import ozguryazilim.movieCollection.Entities.Concrete.Actor;
-import ozguryazilim.movieCollection.Entities.Concrete.Movie;
+
 
 @Controller
 public class ActorController {
@@ -58,6 +58,7 @@ public class ActorController {
 	public String showActorFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 		Actor actor = actorService.getActorById(id);
 		model.addAttribute("actor", actor);
+		model.addAttribute("movie", _movieService.getAllMovie());
 		return "update_actor";
 	}
 

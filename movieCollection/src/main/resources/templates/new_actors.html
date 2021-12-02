@@ -8,23 +8,25 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <body>
-<nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" th:href="@{/}">ANASAYFA</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-       
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/actorList}">Aktörler</a>
-        </li>
-        </ul>
-      
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}">ANASAYFA</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/actorList}">Aktörler</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
 	<div class="container">
 		<hr>
 		<h2>Actor Ekle</h2>
@@ -34,19 +36,20 @@
 			<input type="text" th:field="*{firstName}" placeholder="Adi"
 				class="form-control mb-4"> <input type="text"
 				th:field="*{lastName}" placeholder="Soyadi"
-				class="form-control mb-4">
-				 <select class="form-control"
-				required="required" th:value="${actor.movie}" name="movie"
-				id="movie">
-				<option th:each="movie : ${movie}" th:value="${movie.id}"
-					th:text="${movie.filmName}"></option>
-			</select> 
+				class="form-control mb-4"> 
+				
+				<select class="form-control"
+				 th:field="*{movies}" multiple aria-label="multiple select example">
+	
+					 <option th:each="movie :${movie}" th:value="${movie.id}" th:text="${movie.filmName}"></option>
+			</select>
 			
-			
+
+
 			<button type="submit" class="btn btn-info cal-2">Ekle</button>
 
 		</form>
-	
+
 	</div>
 </body>
 </html>

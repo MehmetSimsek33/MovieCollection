@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ozguryazilim.movieCollection.Business.Abstract.ActorService;
 import ozguryazilim.movieCollection.Business.Abstract.MovieService;
+import ozguryazilim.movieCollection.Entities.Concrete.Actor;
 import ozguryazilim.movieCollection.Entities.Concrete.Movie;
 
 @Controller
 public class MovieController  {
 		
 	private MovieService _movieService;
+	@Autowired
+	private ActorService actorService;
 	
 
 	public MovieController(MovieService movieService) {
@@ -29,8 +33,8 @@ public class MovieController  {
 		
 		@GetMapping("/")
 		public String viewHomePage(Model model,String keyword)
-		{
-		
+		{		
+			
 				return findPaginated(1,"filmName","asc",model,keyword);
 			
 			
@@ -40,8 +44,9 @@ public class MovieController  {
 		public String newMovieForm(Model model)
 		{
 			Movie movie = new Movie();
+			
 			model.addAttribute("movie", movie);
-
+			model.addAttribute("actor", actorService.getAllActor());
 			return "new_movie";
 		}
 		
@@ -55,7 +60,7 @@ public class MovieController  {
 		public String showFormForUpdate(@PathVariable (value = "id") long id, Model model) {
 			
 			Movie movie = _movieService.getMovieById(id);
-
+			
 			model.addAttribute("movie", movie);
 			return "update_movie";
 		}
@@ -70,6 +75,7 @@ public class MovieController  {
 		public String findPaginated(@PathVariable(value="pageNo") int pageNo,@RequestParam("sortField") String sortField,
 				@RequestParam("sortDir") String sortDir,Model model,String keyword )
 		{
+		
 			int pageSize=5;
 			Page<Movie> page=_movieService.findPaginated(pageNo, pageSize,sortField,sortDir);
 		
@@ -82,7 +88,7 @@ public class MovieController  {
 		        	model.addAttribute("listMovies",listMovies);
 		        }
 			
-			
+				
 			model.addAttribute("sortField", sortField);
 			model.addAttribute("sortDirection", sortDir);
 			model.addAttribute("reverseSortDirection", sortDir.equals("asc") ? "desc" : "asc");
@@ -99,6 +105,7 @@ public class MovieController  {
 		 public String home(@ModelAttribute("searchWord") Model model, String searchWord) {
 		
 			 List<Movie> listMovie = _movieService.getByKeyword(searchWord);
+			 	
 				model.addAttribute("listMovies", listMovie);
 				model.addAttribute("searchWord", searchWord);
 				model.addAttribute("listMoviesSize", listMovie.size());
@@ -106,4 +113,5 @@ public class MovieController  {
 	
 				
 		 }
+
 }

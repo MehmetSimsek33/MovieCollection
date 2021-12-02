@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import ozguryazilim.movieCollection.Business.Abstract.UserService;
 import ozguryazilim.movieCollection.Entities.dto.UserRegistrationDto;
+
 @Controller
 @RequestMapping("/registration")
 public class UserRegistrationController {
 
 	@Autowired
 	UserService userService;
-	
-	
-	  @ModelAttribute("user")
-	    public UserRegistrationDto userRegistrationDto(){
-	        return new UserRegistrationDto();
-	    }
-	
-	  @GetMapping
-	    public String showRegistrationForm(){
-	        return "registration";
-	    }
+
+	@ModelAttribute("user")
+	public UserRegistrationDto userRegistrationDto() {
+		return new UserRegistrationDto();
+	}
+
+	@GetMapping
+	public String showRegistrationForm() {
+		return "registration";
+	}
+
 	@PostMapping
-	public String registerUserAccount(@ModelAttribute("users") UserRegistrationDto registrationDto)
-	{
+	public String registerUserAccount(@ModelAttribute("users") UserRegistrationDto registrationDto) {
 		userService.save(registrationDto);
 		return "redirect:/registration?success";
 	}

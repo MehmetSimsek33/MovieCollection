@@ -10,32 +10,32 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" th:href="@{/}">ANASAYFA</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-        	
-          <a class="nav-link active" aria-current="page" th:href="@{/newMovieForm}">Film Ekle</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/actorList}">Aktörler</a>
-        </li>
-        </ul>
-      
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}">ANASAYFA</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/newMovieForm}">Film Ekle</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/actorList}">Aktörler</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
 
 	<div class="container my-2">
 
 		<h1>Film Listesi</h1>
 
-	
+
 
 		<form th:action="@{/}" method="get">
 			<div class="input-group mb-3">
@@ -53,18 +53,19 @@
 					<th><a
 						th:href="@{'/page/'+${currentPage}+'?sortField=filmName&sortDir='+${reverseSortDirection}}">Movie
 							Name</a></th>
-					
+
 					<th><a
 						th:href="@{'/page/'+${currentPage}+'?sortField=releaseDate&sortDir='+${reverseSortDirection}}">
 							Tarih</a></th>
 					<th><a
 						th:href="@{'/page/'+${currentPage}+'?sortField=type&sortDir='+${reverseSortDirection}}">Türü
-							</a></th>
-					
+					</a></th>
+
 					<th>Açıklama</th>
 					<th>Dil</th>
 					<th>Media</th>
 					<th></th>
+				
 
 
 				</tr>
@@ -76,9 +77,13 @@
 					<td th:text="${movie.type}"></td>
 					<td th:text="${movie.descrption}"></td>
 					<td th:text="${movie.language}"></td>
-					<td> <img width="150" height="150" alt="Google Login"
-									title="Google login" th:src="@{${movie.media}}"/>
-							</td>
+
+					<td><img width="150" height="150" alt="Google Login"
+						title="Google login" th:src="@{${movie.media}}" /></td>
+
+					
+
+
 					<td><a th:href="@{/deleteMovie/{id}(id=${movie.id})}"
 						class="btn btn-danger">Sil</a>
 						<hr> <a th:href="@{/showFormForUpdate/{id}(id=${movie.id})}"

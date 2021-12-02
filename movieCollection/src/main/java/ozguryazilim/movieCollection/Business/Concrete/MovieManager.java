@@ -2,6 +2,7 @@ package ozguryazilim.movieCollection.Business.Concrete;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import ozguryazilim.movieCollection.Business.Abstract.MovieService;
+import ozguryazilim.movieCollection.DataAccess.Abstact.ActorRepository;
 import ozguryazilim.movieCollection.DataAccess.Abstact.MovieRepository;
+import ozguryazilim.movieCollection.Entities.Concrete.Actor;
 import ozguryazilim.movieCollection.Entities.Concrete.Movie;
 
 @Service
@@ -20,11 +23,14 @@ public class MovieManager implements MovieService {
 	@Autowired
 	private MovieRepository _movieRepository;
 	
+	@Autowired
+	ActorRepository actorRepository;
 	
 
 	@Override
 	public List<Movie> getAllMovie() {
 		// TODO Auto-generated method stub
+		
 		return _movieRepository.findAll();
 	}
 
@@ -32,9 +38,12 @@ public class MovieManager implements MovieService {
 
 	@Override
 	public void addMovie(Movie movie) {
+			
 		_movieRepository.save(movie);
 		
 	}
+
+
 
 
 

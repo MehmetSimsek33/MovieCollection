@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import ozguryazilim.movieCollection.Business.Abstract.ActorService;
 import ozguryazilim.movieCollection.DataAccess.Abstact.ActorRepository;
 import ozguryazilim.movieCollection.Entities.Concrete.Actor;
-import ozguryazilim.movieCollection.Entities.Concrete.Movie;
 @Service
 public class ActorManager implements ActorService{
 
@@ -17,10 +16,20 @@ public class ActorManager implements ActorService{
 	ActorRepository actorRepository;
 	
 	@Override
-	public void addActor(Actor actor) {
+	public void addActor(Actor model) {
+		Actor actor = new Actor();
+		
+		fill(actor, model);
 		actorRepository.save(actor);
+	   
 		
 	}
+	private void fill(Actor actor, Actor model)
+	{
+       actor.setFirstName(model.getFirstName());
+       actor.setLastName(model.getFirstName());
+       actor.setMovies(model.getMovies());
+    }
 
 	@Override
 	public void deleteActor(long id) {
